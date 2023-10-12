@@ -16,6 +16,4 @@ public class GlobalAppExceptionHandler {
         return new ResponseEntity<>( apiException,e.getHttpStatus());
     }
 
-
-
 }
