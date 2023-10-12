@@ -43,11 +43,9 @@ public class ApiServiceImpl implements ApiService {
             }
         });
         ResponseEntity<String> ontologyResponse = restTemplate.getForEntity(Objects.requireNonNull(environment.getProperty(AppConstants.ONTOLOGY_API_URL)+ params[0]), String.class, params[0] );
-        System.out.println (  " Api Response :  " + ontologyResponse.getBody());
-        ObjectMapper   mapper = new ObjectMapper();
+       ObjectMapper   mapper = new ObjectMapper();
         try {
             Ontology   ontologyInfo  =  mapper.readValue(  ontologyResponse.getBody(), Ontology.class);
-            System.out.println(   ontologyInfo);
             if( Objects.nonNull(ontologyInfo)){
                  return  Optional.of(ontologyInfo);
             }
