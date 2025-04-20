@@ -8,10 +8,12 @@ import com.ontology.app.service.OntologyService;
 import com.ontology.app.utils.MapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +23,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.time.ZonedDateTime;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -44,6 +47,17 @@ public class OntologyController {
         }
         return ResponseBuilder.buildErrorResponse(null, HttpStatus.NOT_FOUND, ErrorMessage.ONTOLOGY_INF_NOT_FOUND );
     }
+
+
+    @RequestMapping (value = "/java/{userStatus}")
+    public ResponseEntity<? extends Response<?>> processJavaQuestions( @RequestHeader Map<String,String> headers){
+        headers.forEach((key, value) -> {
+        });
+
+        return null;
+    }
+
+
 
 
     @Bean

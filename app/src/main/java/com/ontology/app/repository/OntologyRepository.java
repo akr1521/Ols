@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface OntologyRepository  extends MongoRepository<Ontology,String> {
     Optional<Ontology> findByOntologyId(String id);
+
 }
