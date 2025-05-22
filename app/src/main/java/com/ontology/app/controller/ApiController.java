@@ -7,6 +7,7 @@ import com.ontology.app.bo.ResponseBuilder;
 import com.ontology.app.bo.UserBO;
 import com.ontology.app.service.UserService;
 import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,7 @@ import java.util.Objects;
 
 @RestController
 public class ApiController {
+
     final private  UserService userService;
 
     public ApiController(final UserService userService) {
@@ -73,10 +75,12 @@ public class ApiController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST )
     public ResponseEntity<Object>   registerUser(@RequestBody @NonNull UserBO userBO, @RequestHeader Map<String,String> headers) {
+
         if (Objects.isNull(userBO) ||  Objects.isNull(  userBO.getEmail()) ||
          Objects.isNull( userBO.getPassword())){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST , null);
         }
+
 
         return  new ResponseEntity<>(HttpStatusCode.valueOf(201));
     }

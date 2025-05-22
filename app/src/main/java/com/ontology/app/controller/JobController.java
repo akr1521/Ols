@@ -1,12 +1,14 @@
 package com.ontology.app.controller;
 
 
+import com.ontology.app.bo.AddJobRequest;
 import com.ontology.app.bo.UserBO;
 import com.ontology.app.entity.Applicant;
 import com.ontology.app.entity.Job;
 import com.ontology.app.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -55,9 +57,24 @@ public class JobController {
         return jobList;
     }
 
+
+
+    @RequestMapping(value = "/jobs-premium/add" , method = RequestMethod.POST)
+    public ResponseEntity<Object> addJob(@RequestHeader  Map<String,String> headers, @RequestBody AddJobRequest  addJobRequest){
+        if ( Objects.isNull(  addJobRequest)){
+            if ( Objects.isNull( addJobRequest.getCompany())){
+             return  new ResponseEntity<>( "Invalid Request", HttpStatus.BAD_REQUEST);
+            }
+        }
+
+        return  null ;
+    }
+
+
     private String extractAuthToken(Map<String, String> headers) {
         // Adjust this based on how you are sending the authentication token (e.g., Authorization header with Bearer scheme)
         return headers.get("Authorization"); // Example: Assuming token is in the Authorization header
     }
+
 
 }

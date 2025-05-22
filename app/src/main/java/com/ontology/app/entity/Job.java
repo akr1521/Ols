@@ -65,6 +65,10 @@ public class Job {
     @Column(name ="is_flight_covered")
     private String isFlightCovered;
 
+    @Column(name ="company_url")
+    private String companyUrl;
+
+
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(
             name = "job_skill",
@@ -73,6 +77,55 @@ public class Job {
     )
     private Set<Skill> skills = new HashSet<>();
 
+
+
+    public String getCompanyUrl () {
+        return companyUrl;
+    }
+
+    public void setCompanyUrl (String companyUrl) {
+        this.companyUrl = companyUrl;
+    }
+
+    public Long getId () {
+        return id;
+    }
+
+    public void setId (Long id) {
+        this.id = id;
+    }
+
+    public Date getCreateAt () {
+        return createAt;
+    }
+
+    public String getCompany () {
+        return company;
+    }
+
+    public String getCountry () {
+        return country;
+    }
+
+    public String getCountryIcon () {
+        return countryIcon;
+    }
+
+    public String getIsVisaCovered () {
+        return isVisaCovered;
+    }
+
+    public String getIsFlightCovered () {
+        return isFlightCovered;
+    }
+
+    public Set<Skill> getSkills () {
+        return skills;
+    }
+
+    public void setSkills (Set<Skill> skills) {
+        this.skills = skills;
+    }
 
     public boolean isPosted () {
         return isPosted;
